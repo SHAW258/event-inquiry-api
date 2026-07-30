@@ -94,7 +94,7 @@ class SecurityAuthorizationTest {
 
     @Test
     @WithMockUser(username = "user2@example.com", roles = {"USER"})
-    void getInquiryById_ShouldReturn403Forbidden_WhenUserIsNotOwner (IDOR Protection) () throws Exception {
+    void getInquiryById_ShouldReturn403Forbidden_WhenUserIsNotOwner() throws Exception {
         // IDOR attack simulation: user2 attempts to access user1's inquiry ID
         mockMvc.perform(get("/api/v1/inquiries/" + user1InquiryId))
                 .andExpect(status().isForbidden());
